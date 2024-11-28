@@ -132,8 +132,8 @@ def loguenado_cuenta (imagen, username, password, certeza=0.8, intentos=10):
     exit()  # Terminar el programa
 
 
-username= ["se colocan los usuarios"]
-password = "1234"
+username= ["usuario"] #reemplazar por usuario
+password = "pass" #reemplazar por contraseña
 for i in username:
     print (f"logueando {i}")
     # Paso 1: Abrir el juego

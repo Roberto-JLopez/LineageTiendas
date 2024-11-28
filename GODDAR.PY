@@ -37,7 +37,7 @@ def dobleclick(buscar_elemento):
 def buscar_elemento (imagen, nombre_elemento, certeza, intentos=10):
     for _ in range(intentos):
         try:
-            localizacion=pyautogui.locateCenterOnScreen(imagen, confidence=certeza)
+            localizacion=pyautogui.locateCenterOnScreen(image=imagen,minSearchTime=2,confidence=certeza)
             if localizacion:
                 click(localizacion)
                 print(f"Elemento {nombre_elemento} encontrado")
@@ -52,7 +52,7 @@ def buscar_elemento (imagen, nombre_elemento, certeza, intentos=10):
 def comenzar_compra (imagen, certeza, intentos=10):
     for _ in range(intentos):
         try:
-            localizacion=pyautogui.locateCenterOnScreen(imagen, confidence=certeza)
+            localizacion=pyautogui.locateCenterOnScreen(image=imagen,minSearchTime=2, confidence=certeza)
             if localizacion:
                 click(localizacion)
                 print ("comprando listo")
@@ -67,7 +67,7 @@ def comenzar_compra (imagen, certeza, intentos=10):
 def mensaje (imagen, certeza, intentos=10):
     for _ in range(intentos):
         try:
-            localizacion=pyautogui.locateCenterOnScreen(imagen, confidence=certeza)
+            localizacion=pyautogui.locateCenterOnScreen(image=imagen,minSearchTime=2,confidence=certeza)
             if localizacion:
                 click(localizacion)
                 keyboard.write(">>Entrance Sepulcher<<")
@@ -85,10 +85,10 @@ def mensaje (imagen, certeza, intentos=10):
 def compra_iten (imagenIten, certeza=0.8, intentos=5):
     for _ in range(intentos):
         try:
-            localizacion=pyautogui.locateOnScreen(imagenIten, confidence=certeza)
+            localizacion=pyautogui.locateOnScreen(image=imagenIten,minSearchTime=2,confidence=certeza)
             if localizacion:
-                coordenadas=pyautogui.center(localizacion)
-                dobleclick(coordenadas)
+
+                dobleclick(localizacion)
                 time.sleep(1)
                 pyautogui.write ("100000000")
                 pyautogui.press('enter')
@@ -112,10 +112,9 @@ def compra_iten (imagenIten, certeza=0.8, intentos=5):
 def loguenado_cuenta (imagen, username, password, certeza=0.8, intentos=10):
     for _ in range(intentos):
         try:
-            localizacion = pyautogui.locateOnScreen(imagen, confidence=certeza)
+            localizacion = pyautogui.locateOnScreen(image=imagen,minSearchTime=2, confidence=certeza)
             if localizacion:
-                coordenadas=pyautogui.center(localizacion)
-                click(coordenadas)               
+                click(localizacion)
                 pyautogui.write(username)
                 pyautogui.press("tab")
                 pyautogui.write(password)
@@ -131,8 +130,8 @@ def loguenado_cuenta (imagen, username, password, certeza=0.8, intentos=10):
 
 
 
-username= ["se colocan los usuarios"]
-password = "1234"
+username= ["usuario"] #reemplazar por usuario
+password = "pass" #reemplazar por contraseña
 for i in username:
     print (f"logueando {i}")
     # Paso 1: Abrir el juego
